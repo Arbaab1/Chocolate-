@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>FRESH CHOCOLATE — Authentic & Delicious, Chennai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cocoa-950:#1F1109;
+    --cocoa-800:#2E1912;
+    --cocoa-700:#432818;
+    --rose-gold:#C98A63;
+    --rose-gold-light:#E8B98E;
+    --blush:#E9C9BC;
+    --cream:#FBF4EA;
+    --cream-dim:#F2E4D2;
+    --ink:#20140C;
+    --ink-soft:#6E5C4F;
+    --white:#FFFFFF;
+    --line: rgba(32,20,12,0.12);
+    --shadow: 0 26px 64px rgba(32,20,12,0.18);
+    --radius-lg:22px;
+    --radius-md:14px;
+  }
+  *, *::before, *::after{box-sizing:border-box;}
+  html, body{margin:0; padding:0; width:100%; max-width:100vw; overflow-x:hidden; scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
+  body{background:var(--cream); color:var(--ink); font-family:'Jost', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Italiana', serif; font-weight:400; margin:0; color:var(--cocoa-950); letter-spacing:0.02em;}
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+  ul{margin:0; padding:0; list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  img{max-width:100%; display:block;}
+  ::selection{background:var(--rose-gold-light); color:var(--cocoa-950);}
+  :focus-visible{outline:2px solid var(--rose-gold); outline-offset:3px;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{background:var(--cocoa-950); color:rgba(251,244,234,0.82); font-size:12px; letter-spacing:0.04em;}
+  .topbar-inner{max-width:1180px; margin:0 auto; padding:8px 32px; display:flex; justify-content:center; align-items:center; gap:14px; text-align:center; flex-wrap:wrap;}
+  .topbar strong{color:var(--rose-gold-light);}
+  @media (max-width:700px){.topbar-inner{padding:7px 16px; font-size:10.5px;}}
+
+  /* ---------- Nav ---------- */
+  .nav{position:sticky; top:0; z-index:500; background:rgba(251,244,234,0.92); backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1180px; margin:0 auto; padding:0 32px; height:86px; display:flex; align-items:center; justify-content:space-between; gap:24px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-mark{width:44px; height:44px; border-radius:50%; background:var(--cocoa-950); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .brand-mark svg{width:22px; height:22px; stroke:var(--rose-gold-light);}
+  .brand-text{display:flex; flex-direction:column; line-height:1.1;}
+  .brand-text strong{font-family:'Italiana', serif; font-size:22px; letter-spacing:0.08em; color:var(--cocoa-950); text-transform:uppercase;}
+  .brand-text span{font-size:10px; color:var(--ink-soft); letter-spacing:0.12em; text-transform:uppercase;}
+  .nav-links{display:flex; align-items:center; gap:4px;}
+  .nav-links a{font-size:13px; color:var(--ink-soft); padding:10px 14px; border-radius:100px; font-weight:600; transition:color .2s ease, background .2s ease; letter-spacing:0.03em;}
+  .nav-links a:hover{color:var(--cocoa-950); background:var(--cream-dim);}
+  .nav-right{display:flex; align-items:center; gap:14px; flex-shrink:0;}
+  .bag-btn{position:relative; background:none; border:none; padding:8px;}
+  .bag-btn svg{width:22px; height:22px; stroke:var(--cocoa-950);}
+  .bag-count{position:absolute; top:-2px; right:-2px; background:var(--rose-gold); color:var(--white); font-size:10px; font-weight:700; width:17px; height:17px; border-radius:50%; display:flex; align-items:center; justify-content:center;}
+  .nav-cta{background:#25D366; color:#fff; border:none; padding:12px 22px; border-radius:100px; font-size:13px; font-weight:700; letter-spacing:0.02em; display:flex; align-items:center; gap:8px; transition:transform .2s ease, background .2s ease;}
+  .nav-cta:hover{transform:translateY(-1px); background:#1FB856;}
+  .nav-cta svg{width:15px; height:15px; fill:#fff;}
+  .nav-toggle{display:none; background:none; border:none; padding:6px;}
+  .nav-toggle svg{width:24px; height:24px; stroke:var(--cocoa-950);}
+  @media (max-width:960px){
+    .nav-links{display:none;}
+    .nav-toggle{display:block;}
+    .nav-cta span{display:none;}
+    .nav-inner{height:64px; padding:0 16px !important;}
+    .brand-text span{display:none;}
+    .brand-text strong{font-size:17px;}
+  }
+  .mobile-menu{display:none; flex-direction:column; padding:8px 20px 18px; gap:2px; background:var(--cream); border-bottom:1px solid var(--line);}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{padding:13px 6px; font-size:14.5px; font-weight:600; color:var(--ink-soft); border-bottom:1px solid var(--line);}
+
+  section{padding:96px 0;}
+  .section-tight{padding:64px 0;}
+  .band-dark{background:radial-gradient(circle at 15% 20%, rgba(201,138,99,0.18), transparent 55%), radial-gradient(circle at 85% 80%, rgba(67,40,24,0.4), transparent 55%), var(--cocoa-950); color:var(--cream);}
+  .band-dark h1, .band-dark h2, .band-dark h3{color:var(--cream);}
+  .band-cream-dim{background:var(--cream-dim);}
+
+  .kicker{display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; color:var(--rose-gold); background:var(--cream-dim); padding:7px 16px; border-radius:100px; margin-bottom:20px; letter-spacing:0.1em; text-transform:uppercase;}
+  .band-dark .kicker{background:rgba(251,244,234,0.08); color:var(--rose-gold-light);}
+  .kicker::before{content:'✦'; font-size:9px; color:var(--rose-gold);}
+  h2.h-lg{font-size:clamp(30px, 4.6vw, 50px); line-height:1.16; max-width:680px; text-transform:uppercase; letter-spacing:0.02em;}
+  .sub{font-family:'Jost'; font-size:16.5px; color:var(--ink-soft); max-width:520px; margin-top:16px; text-transform:none; letter-spacing:normal;}
+  .band-dark .sub{color:rgba(251,244,234,0.72);}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;}
+
+  .btn{display:inline-flex; align-items:center; gap:10px; padding:15px 28px; border-radius:100px; font-weight:700; font-size:13px; border:none; letter-spacing:0.04em; text-transform:uppercase; transition:transform .2s ease, box-shadow .2s ease, background .2s ease;}
+  .btn-gold{background:linear-gradient(135deg, var(--rose-gold-light), var(--rose-gold)); color:var(--cocoa-950);}
+  .btn-gold:hover{transform:translateY(-2px); box-shadow:0 16px 34px rgba(201,138,99,0.4);}
+  .btn-outline{background:transparent; border:1.5px solid var(--cocoa-950); color:var(--cocoa-950);}
+  .btn-outline:hover{background:var(--cocoa-950); color:var(--cream);}
+  .band-dark .btn-outline{border-color:rgba(251,244,234,0.4); color:var(--cream);}
+  .band-dark .btn-outline:hover{background:var(--cream); color:var(--cocoa-950);}
+  .btn-whatsapp{background:#25D366; color:#fff;}
+  .btn-whatsapp:hover{transform:translateY(-2px); background:#1FB856;}
+  .btn-whatsapp svg{width:15px; height:15px; fill:#fff;}
+
+  /* ---------- Hero ---------- */
+  .hero{display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; padding-top:52px;}
+  .hero-copy .btn-row{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .trust-row{display:flex; gap:34px; margin-top:46px; flex-wrap:wrap;}
+  .trust-item strong{display:block; font-family:'Italiana', serif; font-size:28px; color:var(--cocoa-950);}
+  .trust-item span{font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.05em;}
+
+  .photo-tile{position:relative; border-radius:var(--radius-md); overflow:hidden; display:flex; align-items:flex-end; padding:16px;}
+  .photo-tile img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;}
+  .photo-tile span{position:relative; z-index:2; font-family:'Jost', sans-serif; font-weight:600; font-size:0.85rem; color:var(--cream); letter-spacing:0.02em;}
+  .photo-tile::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, transparent 42%, rgba(20,12,6,0.62));}
+  .pt-a{background:linear-gradient(140deg,#2E1912,#5C3620 55%,#C98A63);}
+  .pt-b{background:linear-gradient(140deg,#1F1109,#432818 60%,#E8B98E);}
+  .pt-c{background:linear-gradient(140deg,#432818,#7A5030 55%,#E8B98E);}
+  .pt-d{background:linear-gradient(140deg,#1F1109,#2E1912 55%,#C98A63);}
+  .pt-e{background:linear-gradient(140deg,#5c3020,#7A5030 55%,#E9C9BC);}
+  .pt-f{background:linear-gradient(140deg,#2E1912,#432818 60%,#8a6a48);}
+  .pt-g{background:linear-gradient(140deg,#3a2414,#8a5a2c 55%,#E8B98E);}
+  .pt-h{background:linear-gradient(140deg,#4a2818,#7A5030 55%,#E9C9BC);}
+
+  .hero-art{position:relative; aspect-ratio:1/1;}
+  .hero-art .photo-tile{position:absolute; border-radius:20px; box-shadow:var(--shadow);}
+  .hero-art .p1{width:70%; height:72%; top:0; right:0;}
+  .hero-art .p2{width:46%; height:40%; bottom:0; left:0; z-index:3;}
+  .float-card{position:absolute; background:var(--white); border-radius:14px; padding:14px 18px; box-shadow:var(--shadow); display:flex; align-items:center; gap:10px;}
+  .float-card.badge{bottom:-18px; left:-16px;}
+  .float-card.badge strong{font-family:'Italiana', serif; font-size:19px; color:var(--cocoa-950); display:block;}
+  .float-card.badge span{font-size:10px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.03em;}
+  .float-card.rating{top:18px; right:-14px;}
+  .float-card.rating strong{font-size:12.5px; color:var(--cocoa-950); display:block;}
+  .float-card.rating span{font-size:10.5px; color:var(--rose-gold); letter-spacing:1px;}
+  .mobile-badges{display:none;}
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr; padding-top:30px;}
+    .hero-art{order:-1; max-width:340px; margin:0 auto; aspect-ratio:1/0.9;}
+    .float-card{display:none;}
+    .mobile-badges{
+      order:-1; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+      max-width:340px; margin:14px auto 28px;
+    }
+    .mobile-badges .float-card{
+      display:flex; position:static; padding:10px 14px; flex:1; min-width:140px;
+      box-shadow:0 8px 22px rgba(32,20,12,0.12);
+    }
+    .mobile-badges .float-card strong{font-size:14px;}
+    .mobile-badges .float-card span{font-size:9px;}
+  }
+  .fade-in-up{opacity:0; transform:translateY(18px); animation:fadeUp .8s ease forwards;}
+  @keyframes fadeUp{to{opacity:1; transform:translateY(0);}}
+  .delay-1{animation-delay:.1s;} .delay-2{animation-delay:.25s;} .delay-3{animation-delay:.4s;} .delay-4{animation-delay:.55s;}
+
+  /* ---------- Collection quick nav ---------- */
+  .collection-strip{display:flex; gap:14px; flex-wrap:wrap; margin-top:48px;}
+  .collection-chip{display:flex; align-items:center; gap:10px; background:var(--white); border:1px solid var(--line); border-radius:100px; padding:9px 20px 9px 9px; font-size:13px; font-weight:600; color:var(--ink); transition:border-color .2s ease, transform .2s ease;}
+  .collection-chip:hover{border-color:var(--rose-gold); transform:translateY(-2px);}
+  .collection-chip .dot{width:26px; height:26px; border-radius:50%; flex-shrink:0;}
+
+  /* ---------- Product grid ---------- */
+  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:48px;}
+  .product-card{position:relative; background:var(--white); border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; display:flex; flex-direction:column; transition:transform .3s ease, box-shadow .3s ease;}
+  .product-card::before{content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--rose-gold), var(--rose-gold-light), var(--rose-gold)); transform:scaleX(0); transform-origin:left; transition:transform .35s ease; z-index:4;}
+  .product-card:hover{transform:translateY(-6px); box-shadow:0 30px 60px rgba(32,20,12,0.2);}
+  .product-card:hover::before{transform:scaleX(1);}
+  .product-card .photo-tile{height:170px; border-radius:0;}
+  .product-tag{position:absolute; top:12px; left:12px; z-index:3; background:var(--rose-gold); color:var(--white); font-size:10px; font-weight:700; padding:5px 11px; border-radius:100px; text-transform:uppercase; letter-spacing:0.03em;}
+  .product-body{padding:20px; display:flex; flex-direction:column; gap:10px; flex:1;}
+  .product-name{font-size:17px; font-family:'Jost'; font-weight:700; text-transform:none; letter-spacing:normal; color:var(--cocoa-950);}
+  .product-desc{font-size:12.5px; color:var(--ink-soft); line-height:1.55; flex:1;}
+  .product-pack-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;}
+  .pack-btn{border:1.4px solid var(--line); background:var(--cream); padding:6px 12px; border-radius:100px; font-size:11px; font-weight:700; color:var(--ink-soft); cursor:pointer; transition:all .15s ease;}
+  .pack-btn.active{background:var(--cocoa-950); color:var(--rose-gold-light); border-color:var(--cocoa-950);}
+  .product-foot{display:flex; justify-content:space-between; align-items:center; margin-top:8px; padding-top:12px; border-top:1px dashed var(--line);}
+  .product-price{font-family:'Italiana', serif; font-size:22px; color:var(--rose-gold);}
+  .add-btn{background:var(--cocoa-950); color:var(--rose-gold-light); border:none; padding:9px 16px; border-radius:100px; font-size:11px; font-weight:700; text-transform:uppercase; transition:background .2s ease;}
+  .add-btn:hover{background:var(--cocoa-700);}
+  @media (max-width:1040px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.product-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Craft / story ---------- */
+  .craft-layout{display:grid; grid-template-columns:0.9fr 1.1fr; gap:50px; align-items:center; margin-top:48px;}
+  .craft-frame .photo-tile{aspect-ratio:4/5; border-radius:20px; box-shadow:var(--shadow);}
+  .craft-list{display:flex; flex-direction:column; gap:22px; margin-top:26px;}
+  .craft-item{display:flex; gap:16px; align-items:flex-start;}
+  .craft-item .num{font-family:'Italiana', serif; font-size:28px; color:var(--rose-gold); flex-shrink:0;}
+  .craft-item strong{display:block; font-size:15.5px; color:var(--cocoa-950); margin-bottom:4px; font-family:'Jost';}
+  .craft-item p{font-size:13.5px; color:var(--ink-soft);}
+  @media (max-width:860px){.craft-layout{grid-template-columns:1fr;}}
+
+  /* ---------- Perks ---------- */
+  .perk-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:44px;}
+  .perk-card{background:var(--white); border:1px solid var(--line); border-radius:var(--radius-md); padding:26px; text-align:center; transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;}
+  .perk-card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--rose-gold);}
+  .perk-card .ic{width:44px; height:44px; margin:0 auto 14px; border-radius:50%; background:var(--cream-dim); display:flex; align-items:center; justify-content:center;}
+  .perk-card .ic svg{width:21px; height:21px; stroke:var(--rose-gold);}
+  .perk-card strong{display:block; font-size:15px; color:var(--cocoa-950); margin-bottom:6px; font-family:'Jost';}
+  .perk-card p{font-size:12.5px; color:var(--ink-soft);}
+  @media (max-width:800px){.perk-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Luxury gold-foil divider ---------- */
+  .gold-divider{display:flex; align-items:center; gap:18px; max-width:1180px; margin:0 auto; padding:0 32px;}
+  .gold-divider::before, .gold-divider::after{content:''; flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--rose-gold) 50%, transparent);}
+  .gold-divider .mark{width:8px; height:8px; border-radius:50%; background:var(--rose-gold); flex-shrink:0; box-shadow:0 0 0 5px rgba(201,138,99,0.15);}
+  @media (max-width:900px){.gold-divider{padding:0 16px;}}
+
+  /* ---------- Reviews ---------- */
+  .ig-badge{display:inline-flex; align-items:center; gap:10px; background:var(--white); border:1px solid var(--line); border-radius:14px; padding:10px 16px;}
+  .ig-badge .ig-icon{width:26px; height:26px; border-radius:8px; background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .ig-badge .ig-icon svg{width:14px; height:14px; stroke:#fff; fill:none;}
+  .ig-badge .ig-text strong{font-size:14px; color:var(--cocoa-950); display:block; font-family:'Jost';}
+  .ig-badge .ig-text span{font-size:11.5px; color:var(--ink-soft);}
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px;}
+  .testi-card{background:var(--white); border-radius:var(--radius-md); padding:26px; border:1px solid var(--line);}
+  .stars{color:var(--rose-gold); margin-bottom:14px; letter-spacing:2px; font-size:14px;}
+  .testi-quote{font-size:14.5px; color:var(--ink); line-height:1.6; font-style:italic;}
+  .testi-person{display:flex; align-items:center; gap:12px; margin-top:18px;}
+  .testi-avatar{width:36px; height:36px; border-radius:50%; background:var(--cream-dim); color:var(--cocoa-950); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; font-family:'Italiana';}
+  .testi-name{font-size:13.5px; font-weight:700; color:var(--cocoa-950); font-family:'Jost';}
+  .testi-loc{font-size:12px; color:var(--ink-soft);}
+  @media (max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+
+  /* ---------- WhatsApp CTA band ---------- */
+  .wa-cta{display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; background:var(--white); border-radius:var(--radius-lg); padding:38px 42px; box-shadow:var(--shadow);}
+  @media (max-width:760px){.wa-cta{flex-direction:column; align-items:flex-start; padding:28px 24px;} .wa-cta .btn{width:100%; justify-content:center;}}
+
+  footer{background:var(--cocoa-950); color:rgba(251,244,234,0.7); padding:52px 0 26px;}
+  .foot-top{display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; padding-bottom:34px; border-bottom:1px solid rgba(251,244,234,0.12);}
+  .foot-brand{max-width:300px;}
+  .foot-brand strong{display:block; font-family:'Italiana', serif; color:var(--cream); font-size:20px; letter-spacing:0.06em; text-transform:uppercase;}
+  .foot-brand p{font-size:13px; margin-top:14px; color:rgba(251,244,234,0.55);}
+  .foot-cols{display:flex; gap:56px; flex-wrap:wrap;}
+  .foot-col strong{display:block; color:var(--cream); font-size:12px; margin-bottom:15px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em;}
+  .foot-col a, .foot-col span{display:block; font-size:13px; padding:6px 0; color:rgba(251,244,234,0.6);}
+  .foot-col a:hover{color:var(--rose-gold-light);}
+  .foot-bottom{display:flex; justify-content:space-between; padding-top:22px; font-size:11.5px; flex-wrap:wrap; gap:10px; color:rgba(251,244,234,0.4);}
+
+  /* ---------- Cart drawer ---------- */
+  .overlay{position:fixed; inset:0; background:rgba(32,20,12,0.5); z-index:900; opacity:0; pointer-events:none; transition:opacity .3s ease;}
+  .overlay.show{opacity:1; pointer-events:auto;}
+  .cart-drawer{position:fixed; top:0; right:0; bottom:0; width:min(400px, 92vw); background:var(--cream); z-index:901; box-shadow:-20px 0 50px rgba(0,0,0,0.25); transform:translateX(100%); transition:transform .35s ease; display:flex; flex-direction:column;}
+  .cart-drawer.show{transform:translateX(0);}
+  .cart-head{display:flex; justify-content:space-between; align-items:center; padding:22px 24px; border-bottom:1px solid var(--line);}
+  .cart-head h3{font-size:22px; text-transform:uppercase; letter-spacing:0.05em;}
+  .cart-close{background:none; border:none; font-size:22px; color:var(--ink-soft);}
+  .cart-items{flex:1; overflow-y:auto; padding:16px 24px;}
+  .cart-empty{text-align:center; padding:60px 20px; color:var(--ink-soft); font-size:13.5px;}
+  .cart-item{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 0; border-bottom:1px solid var(--line);}
+  .cart-item-name{font-size:13.5px; font-weight:600;}
+  .cart-item-meta{font-size:11.5px; color:var(--ink-soft); margin-top:2px;}
+  .cart-item-price{font-family:'Italiana', serif; font-size:17px; color:var(--rose-gold); white-space:nowrap;}
+  .cart-item-remove{background:none; border:none; color:var(--ink-soft); font-size:11px; text-decoration:underline; margin-top:4px;}
+  .cart-foot{padding:20px 24px; border-top:1px solid var(--line); background:var(--white);}
+  .cart-total-row{display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;}
+  .cart-total-row strong{font-family:'Italiana', serif; font-size:24px; color:var(--rose-gold);}
+  .cart-foot .btn{width:100%; justify-content:center;}
+
+  @media (max-width:900px){
+    .wrap{padding:0 16px !important;}
+    .nav-inner{padding:0 16px !important;}
+    section{padding:52px 0 !important;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">Handmade fresh, no preservatives · <strong>All-India Delivery</strong> · FSSAI Licensed</div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2 20 7v10l-8 5-8-5V7z"/><path d="M4 7l8 5 8-5M12 12v10"/></svg></span>
+      <span class="brand-text"><strong>Fresh Chocolate</strong><span>Authentic & Delicious Taste</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#minis">Mini Chocolates</a>
+      <a href="#bars">Chocolate Bars</a>
+      <a href="#sticks">Chocolate Sticks</a>
+    </div>
+    <div class="nav-right">
+      <button class="bag-btn" onclick="openCart()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="bag-count" id="bagCount">0</span>
+      </button>
+      <a class="nav-cta" href="https://wa.me/919361597449" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.77.46 3.45 1.28 4.93L2 22l5.27-1.38a9.9 9.9 0 0 0 4.77 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.75 14.13c-.24.68-1.4 1.3-1.93 1.36-.49.06-1.11.09-1.79-.11-.41-.13-.95-.31-1.63-.6-2.87-1.24-4.75-4.15-4.9-4.34-.14-.2-1.17-1.56-1.17-2.98s.72-2.11 1-2.4c.24-.26.53-.32.7-.32.18 0 .35 0 .5.01.16.01.38-.06.6.45.24.57.8 1.96.87 2.11.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.29.29-.12.56.16.28.72 1.18 1.55 1.91 1.06.94 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.61-.14.24.09 1.55.73 1.82.87.26.14.44.2.5.32.07.13.07.71-.17 1.4z"/></svg>
+        <span>Order on WhatsApp</span>
+      </a>
+      <button class="nav-toggle" onclick="toggleMobile()"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#minis" onclick="toggleMobile()">Mini Chocolates</a>
+    <a href="#bars" onclick="toggleMobile()">Chocolate Bars</a>
+    <a href="#sticks" onclick="toggleMobile()">Chocolate Sticks</a>
+    <a href="https://wa.me/919361597449" target="_blank" rel="noopener" onclick="toggleMobile()">Order on WhatsApp</a>
+  </div>
+</nav>
+
+<div id="top"></div>
+
+<!-- ============================ HERO ============================ -->
+<section>
+  <div class="wrap hero">
+    <div class="hero-copy">
+      <div class="kicker fade-in-up">Handmade in Chrompet, Chennai</div>
+      <h1 style="font-size:clamp(30px,4.8vw,52px);" class="fade-in-up delay-1">Fresh Chocolate, Made With Love</h1>
+      <p class="sub fade-in-up delay-2">Every piece handmade in small batches, with no preservatives — just real cocoa, real cream, and real care. From mini bites to gifting boxes, delivered fresh across India.</p>
+      <div class="btn-row fade-in-up delay-3">
+        <button class="btn btn-gold" onclick="document.getElementById('minis').scrollIntoView({behavior:'smooth'})">Shop the Collection →</button>
+        <a class="btn btn-whatsapp" href="https://wa.me/919361597449" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.77.46 3.45 1.28 4.93L2 22l5.27-1.38a9.9 9.9 0 0 0 4.77 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.75 14.13c-.24.68-1.4 1.3-1.93 1.36-.49.06-1.11.09-1.79-.11-.41-.13-.95-.31-1.63-.6-2.87-1.24-4.75-4.15-4.9-4.34-.14-.2-1.17-1.56-1.17-2.98s.72-2.11 1-2.4c.24-.26.53-.32.7-.32.18 0 .35 0 .5.01.16.01.38-.06.6.45.24.57.8 1.96.87 2.11.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.29.29-.12.56.16.28.72 1.18 1.55 1.91 1.06.94 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.61-.14.24.09 1.55.73 1.82.87.26.14.44.2.5.32.07.13.07.71-.17 1.4z"/></svg>Order Now</a>
+      </div>
+      <div class="trust-row fade-in-up delay-4">
+        <div class="trust-item"><strong>12</strong><span>Handmade varieties</span></div>
+        <div class="trust-item"><strong>1,253+</strong><span>Instagram followers</span></div>
+        <div class="trust-item"><strong>All India</strong><span>Delivery available</span></div>
+      </div>
+    </div>
+    <div class="hero-art fade-in-up delay-2">
+      <div class="photo-tile pt-b p1"><img src="images/chocolate5.jpg" alt="Classic Dark Chocolate Bar" onerror="this.style.display='none'"><span>Classic Dark Chocolate Bar</span></div>
+      <div class="photo-tile pt-g p2"><img src="images/chocolate1.jpg" alt="Dark Mini Chocolate Bits" onerror="this.style.display='none'"><span>Dark Mini Chocolate Bits</span></div>
+      <div class="float-card badge"><div><strong>Handmade Fresh</strong><span>No preservatives added</span></div></div>
+      <div class="float-card rating"><div><strong>1,253 followers</strong><span>★★★★★ on Instagram</span></div></div>
+    </div>
+    <div class="mobile-badges">
+      <div class="float-card badge"><div><strong>Handmade Fresh</strong><span>No preservatives added</span></div></div>
+      <div class="float-card rating"><div><strong>1,253 followers</strong><span>★★★★★ on Instagram</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" style="padding-top:0;">
+  <div class="wrap">
+    <div class="collection-strip">
+      <a class="collection-chip" href="#minis"><span class="dot" style="background:linear-gradient(135deg,#2E1912,#5C3620);"></span>Mini Chocolates</a>
+      <a class="collection-chip" href="#bars"><span class="dot" style="background:linear-gradient(135deg,#8a5a2c,#E8B98E);"></span>Chocolate Bars</a>
+      <a class="collection-chip" href="#sticks"><span class="dot" style="background:linear-gradient(135deg,#5c3020,#7A5030);"></span>Chocolate Sticks</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MINI CHOCOLATES ============================ -->
+<section id="minis" class="band-cream-dim">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Collection 01</div><h2 class="h-lg">Mini Chocolates</h2></div>
+      <p class="sub">Bite-sized and handmade — perfect for snacking, gifting, or bulk orders.</p>
+    </div>
+    <div class="product-grid" id="grid-minis"></div>
+  </div>
+</section>
+
+<!-- ============================ CHOCOLATE BARS ============================ -->
+<div class="gold-divider" style="margin:0 auto;"><span class="mark"></span></div>
+
+<section id="bars">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Collection 02</div><h2 class="h-lg">Chocolate Bars</h2></div>
+      <p class="sub">Classic hand-poured bars in dark, milk, white, and our signature 70% cacao.</p>
+    </div>
+    <div class="product-grid" id="grid-bars"></div>
+  </div>
+</section>
+
+<!-- ============================ CHOCOLATE STICKS ============================ -->
+<section id="sticks" class="band-cream-dim">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">Collection 03</div><h2 class="h-lg">Chocolate Sticks</h2></div>
+      <p class="sub">Six-piece boxes of hand-dipped chocolate sticks — a favourite for quick gifting.</p>
+    </div>
+    <div class="product-grid" id="grid-sticks"></div>
+  </div>
+</section>
+
+<!-- ============================ OUR CRAFT ============================ -->
+<div class="gold-divider"><span class="mark"></span></div>
+
+<section id="craft">
+  <div class="wrap">
+    <div class="kicker">Our promise</div>
+    <h2 class="h-lg" style="font-size:clamp(26px,3.8vw,38px);">Made fresh, not stocked</h2>
+    <div class="craft-layout">
+      <div class="craft-frame"><div class="photo-tile pt-c"><img src="images/chocolate9.jpg" alt="Handmade chocolate sticks being prepared" onerror="this.style.display='none'"><span>Hand-dipped, small batches</span></div></div>
+      <div>
+        <p class="sub" style="max-width:52ch;">Every order is prepared fresh, not pulled off a shelf. No preservatives, no shortcuts — just real ingredients handled with care in our Chrompet kitchen.</p>
+        <div class="craft-list">
+          <div class="craft-item"><span class="num">01</span><div><strong>Made to order</strong><p>Batches prepared fresh once your order is confirmed, not stored for weeks.</p></div></div>
+          <div class="craft-item"><span class="num">02</span><div><strong>No preservatives</strong><p>Just real cocoa, cream, and quality ingredients — nothing artificial added.</p></div></div>
+          <div class="craft-item"><span class="num">03</span><div><strong>Packed to travel</strong><p>Insulated, careful packaging so your order arrives fresh anywhere in India.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ REVIEWS ============================ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="kicker">From our customers</div><h2 class="h-lg" style="font-size:clamp(26px,3.6vw,36px);">What people say</h2></div>
+      <div class="ig-badge">
+        <div class="ig-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#fff" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="#fff" stroke-width="2" fill="none"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff"/></svg></div>
+        <div class="ig-text"><strong>@freshchocolate_</strong><span>1,253+ followers on Instagram</span></div>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-quote">"Ordered the family combo pack for Diwali — everyone asked where I got it from. Genuinely fresh taste."</p><div class="testi-person"><div class="testi-avatar">P</div><div><div class="testi-name">Priya V.</div><div class="testi-loc">Chennai</div></div></div></div>
+      <div class="testi-card"><div class="stars">★★★★★</div><p class="testi-quote">"The custom name chocolates for my daughter's birthday were perfect. Ordered on WhatsApp, super easy."</p><div class="testi-person"><div class="testi-avatar">A</div><div><div class="testi-name">Arun K.</div><div class="testi-loc">Chrompet</div></div></div></div>
+      <div class="testi-card"><div class="stars">★★★★☆</div><p class="testi-quote">"70% dark chocolate bar is not too bitter, not too sweet — exactly how I like it. Ordering again."</p><div class="testi-person"><div class="testi-avatar">S</div><div><div class="testi-name">Sandhya R.</div><div class="testi-loc">Chennai</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ WHATSAPP CTA ============================ -->
+<section class="section-tight" style="padding-top:0;">
+  <div class="wrap">
+    <div class="wa-cta">
+      <div>
+        <h3 style="font-size:24px; text-transform:uppercase; letter-spacing:0.03em;">Order directly on WhatsApp</h3>
+        <p class="sub" style="margin-top:6px;">Custom orders, bulk gifting, or a quick question — message us directly.</p>
+      </div>
+      <a class="btn btn-whatsapp" href="https://wa.me/919361597449" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.77.46 3.45 1.28 4.93L2 22l5.27-1.38a9.9 9.9 0 0 0 4.77 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.75 14.13c-.24.68-1.4 1.3-1.93 1.36-.49.06-1.11.09-1.79-.11-.41-.13-.95-.31-1.63-.6-2.87-1.24-4.75-4.15-4.9-4.34-.14-.2-1.17-1.56-1.17-2.98s.72-2.11 1-2.4c.24-.26.53-.32.7-.32.18 0 .35 0 .5.01.16.01.38-.06.6.45.24.57.8 1.96.87 2.11.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.29.29-.12.56.16.28.72 1.18 1.55 1.91 1.06.94 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.61-.14.24.09 1.55.73 1.82.87.26.14.44.2.5.32.07.13.07.71-.17 1.4z"/></svg>+91 93615 97449</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <strong>Fresh Chocolate</strong>
+        <p>Handmade chocolate, crafted fresh in Chrompet, Chennai. Customised gifts, all-India delivery.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <strong>Collections</strong>
+          <a href="#minis">Mini Chocolates</a>
+          <a href="#bars">Chocolate Bars</a>
+          <a href="#sticks">Chocolate Sticks</a>
+        </div>
+        <div class="foot-col">
+          <strong>Contact</strong>
+          <a href="https://wa.me/919361597449" target="_blank" rel="noopener">WhatsApp: +91 93615 97449</a>
+          <a href="https://instagram.com/freshchocolate_" target="_blank" rel="noopener">Instagram: @freshchocolate_</a>
+          <span>Chrompet, Chennai</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© Fresh Chocolate — Authentic & Delicious Taste</span>
+      <span>FSSAI Lic No: 22426517000094</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ CART DRAWER ============================ -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>Your Box</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">Your box is empty — add a chocolate to get started.</div>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-total-row"><span>Estimated total</span><strong id="cartTotal">₹0</strong></div>
+    <a class="btn btn-whatsapp" id="cartWhatsapp" href="https://wa.me/919361597449" target="_blank" rel="noopener" onclick="return prepWhatsappOrder()"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.77.46 3.45 1.28 4.93L2 22l5.27-1.38a9.9 9.9 0 0 0 4.77 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.75 14.13c-.24.68-1.4 1.3-1.93 1.36-.49.06-1.11.09-1.79-.11-.41-.13-.95-.31-1.63-.6-2.87-1.24-4.75-4.15-4.9-4.34-.14-.2-1.17-1.56-1.17-2.98s.72-2.11 1-2.4c.24-.26.53-.32.7-.32.18 0 .35 0 .5.01.16.01.38-.06.6.45.24.57.8 1.96.87 2.11.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.29.29-.12.56.16.28.72 1.18 1.55 1.91 1.06.94 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.61-.14.24.09 1.55.73 1.82.87.26.14.44.2.5.32.07.13.07.71-.17 1.4z"/></svg>Order This Box on WhatsApp</a>
+  </div>
+</div>
+
+<script>
+  // ---------- Product data ----------
+  // Image filenames are numbered for easy replacement after GitHub upload (images/chocolate1.jpg ... chocolate12.jpg)
+  const PRODUCTS = [
+    // Mini Chocolates
+    { id:'p1', section:'minis', img:'chocolate1.jpg', name:'Dark Mini Chocolate Bits', desc:'Rich dark mini chocolate bits, handmade in small batches.', tile:'pt-b', tag:'Bestseller', packs:[{label:'12 pcs', price:140},{label:'25 pcs', price:280},{label:'50 pcs', price:540}] },
+    { id:'p2', section:'minis', img:'chocolate2.jpg', name:'Milk Mini Chocolate Bits', desc:'Smooth, creamy milk chocolate bits — a favourite with kids.', tile:'pt-c', tag:null, packs:[{label:'12 pcs', price:140},{label:'25 pcs', price:280},{label:'50 pcs', price:540}] },
+    { id:'p3', section:'minis', img:'chocolate3.jpg', name:'White Mini Chocolate Bits', desc:'Delicately sweet white chocolate, handmade fresh.', tile:'pt-e', tag:null, packs:[{label:'12 pcs', price:140},{label:'25 pcs', price:280},{label:'50 pcs', price:540}] },
+    { id:'p4', section:'minis', img:'chocolate4.jpg', name:'Mixed Mini Chocolate Bits', desc:'A mix of dark, milk and white bits in every box.', tile:'pt-g', tag:'New', packs:[{label:'12 pcs', price:150},{label:'25 pcs', price:300},{label:'50 pcs', price:580}] },
+
+    // Chocolate Bars
+    { id:'p5', section:'bars', img:'chocolate5.jpg', name:'Classic Dark Chocolate Bar', desc:'Smooth, rich dark chocolate bar, handmade and poured fresh.', tile:'pt-b', tag:'Bestseller', packs:[{label:'1 Bar', price:99},{label:'3 Bars', price:279},{label:'5 Bars', price:449}] },
+    { id:'p6', section:'bars', img:'chocolate6.jpg', name:'Creamy Milk Chocolate Bar', desc:'Our most-loved milk chocolate bar, smooth and mild.', tile:'pt-c', tag:null, packs:[{label:'1 Bar', price:109},{label:'3 Bars', price:309},{label:'5 Bars', price:499}] },
+    { id:'p7', section:'bars', img:'chocolate7.jpg', name:'White Chocolate Bar', desc:'Delicately sweet, handmade white chocolate bar.', tile:'pt-e', tag:null, packs:[{label:'1 Bar', price:119},{label:'3 Bars', price:339},{label:'5 Bars', price:549}] },
+    { id:'p8', section:'bars', img:'chocolate8.jpg', name:'70% Pure Cacao Dark Bar', desc:'Rich, smooth and intense — made with 70% cacao, source of antioxidants.', tile:'pt-g', tag:'Premium', packs:[{label:'1 Bar', price:149},{label:'3 Bars', price:429},{label:'5 Bars', price:699}] },
+
+    // Chocolate Sticks
+    { id:'p9', section:'sticks', img:'chocolate9.jpg', name:'Dark Chocolate Sticks', desc:'Box of 6 hand-dipped dark chocolate sticks.', tile:'pt-d', tag:null, packs:[{label:'1 Box (6 pcs)', price:99},{label:'2 Boxes (12 pcs)', price:189},{label:'4 Boxes (24 pcs)', price:359} ] },
+    { id:'p10', section:'sticks', img:'chocolate10.jpg', name:'Milk Chocolate Sticks', desc:'Box of 6 creamy hand-dipped milk chocolate sticks.', tile:'pt-c', tag:'Bestseller', packs:[{label:'1 Box (6 pcs)', price:109},{label:'2 Boxes (12 pcs)', price:209},{label:'4 Boxes (24 pcs)', price:399}] },
+    { id:'p11', section:'sticks', img:'chocolate11.jpg', name:'Mixed Chocolate Sticks', desc:'Box of 6 sticks, a mix of dark and milk chocolate.', tile:'pt-f', tag:null, packs:[{label:'1 Box (6 pcs)', price:99},{label:'2 Boxes (12 pcs)', price:189},{label:'4 Boxes (24 pcs)', price:359}] },
+    { id:'p12', section:'sticks', img:'chocolate12.jpg', name:'Hazelnut Chocolate Sticks', desc:'Box of 6 chocolate sticks with roasted hazelnut bits.', tile:'pt-h', tag:'New', packs:[{label:'1 Box (6 pcs)', price:119},{label:'2 Boxes (12 pcs)', price:229},{label:'4 Boxes (24 pcs)', price:439}] }
+  ];
+
+  // ---------- Render product grids ----------
+  function renderProducts(){
+    const sections = ['minis','bars','sticks'];
+    sections.forEach(sec => {
+      const container = document.getElementById('grid-' + sec);
+      const items = PRODUCTS.filter(p => p.section === sec);
+      container.innerHTML = items.map(p => `
+        <div class="product-card" data-id="${p.id}">
+          <div style="position:relative;">
+            ${p.tag ? `<span class="product-tag">${p.tag}</span>` : ''}
+            <div class="photo-tile ${p.tile}">
+              <img src="images/${p.img}" alt="${p.name}" onerror="this.style.display='none'">
+              <span>${p.name}</span>
+            </div>
+          </div>
+          <div class="product-body">
+            <div class="product-name">${p.name}</div>
+            <p class="product-desc">${p.desc}</p>
+            <div class="product-pack-row" data-packs>
+              ${p.packs.map((pk, i) => `<button class="pack-btn ${i===0?'active':''}" data-idx="${i}">${pk.label}</button>`).join('')}
+            </div>
+            <div class="product-foot">
+              <div class="product-price" data-price>₹${p.packs[0].price}</div>
+              <button class="add-btn" data-add>Add to Box</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    });
+
+    // Pack selector logic
+    document.querySelectorAll('.product-card').forEach(card => {
+      const id = card.dataset.id;
+      const product = PRODUCTS.find(p => p.id === id);
+      let selectedIdx = 0;
+      const priceEl = card.querySelector('[data-price]');
+      card.querySelectorAll('.pack-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          card.querySelectorAll('.pack-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedIdx = parseInt(btn.dataset.idx);
+          priceEl.textContent = '₹' + product.packs[selectedIdx].price;
+        });
+      });
+      card.querySelector('[data-add]').addEventListener('click', () => {
+        addToCart(product, product.packs[selectedIdx]);
+      });
+    });
+  }
+
+  // ---------- Cart ----------
+  let cart = [];
+
+  function addToCart(product, pack){
+    cart.push({ name: product.name, label: pack.label, price: pack.price });
+    updateCartUI();
+    openCart();
+  }
+  function removeFromCart(index){
+    cart.splice(index, 1);
+    updateCartUI();
+  }
+  function updateCartUI(){
+    document.getElementById('bagCount').textContent = cart.length;
+    const itemsEl = document.getElementById('cartItems');
+    const totalEl = document.getElementById('cartTotal');
+
+    if(cart.length === 0){
+      itemsEl.innerHTML = '<div class="cart-empty">Your box is empty — add a chocolate to get started.</div>';
+      totalEl.textContent = '₹0';
+      return;
+    }
+
+    itemsEl.innerHTML = cart.map((item, i) => `
+      <div class="cart-item">
+        <div>
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-meta">${item.label}</div>
+          <button class="cart-item-remove" onclick="removeFromCart(${i})">Remove</button>
+        </div>
+        <div class="cart-item-price">₹${item.price}</div>
+      </div>
+    `).join('');
+
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+  }
+
+  function openCart(){
+    document.getElementById('cartDrawer').classList.add('show');
+    document.getElementById('overlay').classList.add('show');
+  }
+  function closeCart(){
+    document.getElementById('cartDrawer').classList.remove('show');
+    document.getElementById('overlay').classList.remove('show');
+  }
+
+  function prepWhatsappOrder(){
+    if(cart.length === 0){
+      alert('Your box is empty — add a chocolate first.');
+      return false;
+    }
+    let msg = 'Hi Fresh Chocolate, I would like to order:\n\n';
+    cart.forEach(item => { msg += `• ${item.name} — ${item.label} — ₹${item.price}\n`; });
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    msg += `\nTotal: ₹${total}`;
+    document.getElementById('cartWhatsapp').href = 'https://wa.me/919361597449?text=' + encodeURIComponent(msg);
+    return true;
+  }
+
+  // ---------- Mobile menu ----------
+  function toggleMobile(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  renderProducts();
+</script>
+
+</body>
+</html>
